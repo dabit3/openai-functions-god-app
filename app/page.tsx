@@ -20,8 +20,11 @@ export default function Home() {
           query: input
         })
       })
-      const { data, type } = await response.json()
-      console.log('data:', data)
+      const { data, type, error } = await response.json()
+      if (error) {
+        console.log('error:', error)
+        return
+      }
       if (type === 'image') {
         setImage(data[0])
       }
